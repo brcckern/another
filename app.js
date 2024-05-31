@@ -1,5 +1,9 @@
 const express = require("express");
 const bodyParser = require('body-parser');
+const path = require('path');
+require('dotenv').config({
+  path: path.resolve('process.env'),
+});
 
 const sequelize = require("./data/sequelize");
 const dummyData = require("./data/dummy-data");
@@ -9,7 +13,7 @@ const Lessons = require("./models/lessons");
 const Questions = require("./models/questions");
 
 const app = express();
-const port = process.env.PORT || 3306;
+const port = process.env.PORT || 5000;
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
