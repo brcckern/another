@@ -7,6 +7,8 @@ let correctAnswers = 0;
 let wrongAnswers = 0;
 let finishedExamId;
 let examStarted = false;
+let currentQuestion = 1
+let startedExamId = 0;
 
 exports.get_contact = async (req, res) => {
     try
@@ -75,6 +77,8 @@ exports.exam_result_screen = (req, res) => {
         wrongAnswers = 0;
         finishedExamId = 0;
         examStarted = false;
+        currentQuestion = 1;
+        startedExamId = 0;
     }
     else
     {
@@ -87,7 +91,9 @@ exports.get_exam_screen = async (req, res) => {
     const examId =  parseInt(req.params.examId);
     const questionId = parseInt(req.params.questionId);
     const questionNumber = questionId;
-    if(questionId != 1 && examStarted == false) return res.redirect("/");
+    if(questionNumber != 1 && startedExamId != examId) return res.redirect("/");
+    if(questionNumber != 1 && examStarted == false) return res.redirect("/");
+    if(questionNumber != currentQuestion) return res.redirect("/");
     try
     {
         const exam = await Exams.findAll({
@@ -153,6 +159,8 @@ exports.post_exam_screen = async (req, res) => {
         else wrongAnswers++;
 
         examStarted = true;
+        currentQuestion++;
+        startedExamId = examId;
         res.redirect(`/sinavlar/${examId}/soru=${nextQuestionNumber}`);
     }
     catch(err)
@@ -209,7 +217,12 @@ exports.home = async (req, res) => {
 
         const exams = await Exams.findAll();
         const lessons = await Lessons.findAll();
-
+        correctAnswers = 0;
+        wrongAnswers = 0;
+        finishedExamId = 0;
+        examStarted = false;
+        currentQuestion = 1;
+        startedExamId = 0;
         res.render("user/index", {title: "Ana Sayfa", exams: exams, lessons: lessons, selectedIndex: null});
     }
     catch(err)

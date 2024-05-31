@@ -18,7 +18,7 @@ async function populate()
 
         await Exams.create({
             title: "Fizik (Temel Seviye)",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis inventore voluptate id iste error excepturi iure, expedita natus earum iusto officiis minima facilis illo molestiae alias corrupti velit at vero.",
+            description: "Fizik dersindeki konulara henüz tam olarak hakim değilseniz bu sınav tam size göre. Sınavın tamamı TYT konularını içermekle beraber zorluk olarak temel seviyededir.",
             image: "fizik-1.jpg",
             questionAmount: 10,
             examFinishedNumber: 0,
@@ -27,7 +27,7 @@ async function populate()
 
         await Exams.create({
             title: "Matematik (Temel Seviye)",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis inventore voluptate id iste error excepturi iure, expedita natus earum iusto officiis minima facilis illo molestiae alias corrupti velit at vero.",
+            description: "Matematik dersindeki konulara henüz tam olarak hakim değilseniz bu sınav tam size göre. Sınavın tamamı TYT konularını içermekle beraber zorluk olarak temel seviyededir.",
             image: "matematik-1.jpg",
             questionAmount: 12,
             examFinishedNumber: 0,
@@ -36,11 +36,29 @@ async function populate()
 
         await Exams.create({
             title: "Türkçe (Temel Seviye)",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis inventore voluptate id iste error excepturi iure, expedita natus earum iusto officiis minima facilis illo molestiae alias corrupti velit at vero.",
+            description: "Türkçe dersindeki konulara henüz tam olarak hakim değilseniz bu sınav tam size göre. Sınavın tamamı TYT konularını içermekle beraber zorluk olarak temel seviyededir.",
             image: "turkce-1.jpg",
             questionAmount: 10,
             examFinishedNumber: 0,
             lessonId: 6
+        });
+
+        await Exams.create({
+            title: "Türkçe (İleri Seviye)",
+            description: "Türkçe dersindeki konulara hakim olduğunuzu düşünüyorsanız bu sınav tam size göre. Sınavın tamamı TYT konularını içermekle beraber zorluk olarak ileri seviyededir.",
+            image: "turkce-2.jpg",
+            questionAmount: 10,
+            examFinishedNumber: 0,
+            lessonId: 6
+        });
+
+        await Exams.create({
+            title: "Kimya (Temel Seviye)",
+            description: "Kimya dersindeki konulara henüz tam olarak hakim değilseniz bu sınav tam size göre. Sınavın tamamı TYT konularını içermekle beraber zorluk olarak temel seviyededir.",
+            image: "kimya-1.jpg",
+            questionAmount: 10,
+            examFinishedNumber: 0,
+            lessonId: 3
         });
 
         // Fizik (Temel Seviye)
@@ -460,6 +478,268 @@ async function populate()
             fifthOption: "Tümleç",
             correctAnswer: "Zarf",
             examId: 3
+        });
+
+        // Türkçe (İleri Seviye)
+        await Questions.create({
+            questionNumber: 1,
+            questionContent: "Bilim insanları, doğadaki olayları anlamak ve açıklamak için sürekli olarak gözlem yapar ve deneyler gerçekleştirirler. Ancak, tüm bu çabalarına rağmen bazı olayları henüz tam olarak açıklayabilmiş değillerdir. Örneğin, evrendeki karanlık madde ve karanlık enerjinin ne olduğu konusunda net bir bilgiye sahip değiliz. Buna rağmen, bu bilinmeyenler hakkında çeşitli teoriler ortaya atılmakta ve bu teoriler doğrultusunda araştırmalar devam etmektedir. Bu, bilimsel sürecin dinamik ve sürekli değişen doğasının bir göstergesidir.",
+            question: "Bu parçada aşağıdakilerden hangisine değinilmemiştir?",
+            firstOption: "Bilim insanlarının doğayı anlamak için yaptıkları çalışmalar",
+            secondOption: "Karanlık madde ve enerjinin tam olarak bilinmediği",
+            thirdOption: "Bilimsel sürecin dinamik ve değişken olduğu",
+            fourthOption: "Bilimsel araştırmaların maliyetlerinin yüksek olduğu",
+            fifthOption: "Teorilerin doğrultusunda araştırmaların sürdüğü",
+            correctAnswer: "Bilimsel araştırmaların maliyetlerinin yüksek olduğu",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 2,
+            questionContent: "Sanat, insanoğlunun varoluşsal sorunlarına ışık tutar ve onun iç dünyasını zenginleştirir. Sanatçılar, yarattıkları eserlerle hem kendi duygularını ifade eder hem de izleyicinin duygusal ve düşünsel dünyasında derin etkiler bırakırlar. Edebiyat, resim, heykel, müzik gibi farklı sanat dalları, insan ruhunun çeşitli yönlerini ortaya koyar ve yaşamı anlamlandırma çabasında önemli bir rol oynar.",
+            question: "Bu parçada aşağıdaki sorulardan hangisinin cevabı yoktur?",
+            firstOption: "Sanatın insanoğlunun iç dünyasını nasıl etkilediği",
+            secondOption: "Sanatçıların duygularını nasıl ifade ettikleri",
+            thirdOption: "Farklı sanat dallarının insan ruhuna katkısı",
+            fourthOption: "Sanatın maddi kazanç sağlamadaki rolü",
+            fifthOption: "Sanatın yaşamı anlamlandırmadaki önemi",
+            correctAnswer: "Sanatın maddi kazanç sağlamadaki rolü",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 3,
+            questionContent: "Eğitim sisteminin temel amacı, bireyleri bilgiyle donatmak kadar onları eleştirel düşünebilen, sorgulayan ve yaratıcı bireyler olarak yetiştirmektir. Ancak günümüzde, eğitim sistemleri çoğunlukla ezberci yaklaşımlar üzerine kuruludur. Bu durum, öğrencilerin sadece bilgi depolayan bireyler olarak yetişmesine neden olmaktadır. Oysa ki bilgiye ulaşma yollarını bilen, analiz ve sentez yapabilen bireyler, toplumsal gelişim için çok daha önemlidir.",
+            question: "Bu parçada vurgulanmak istenen düşünce aşağıdakilerden hangisidir?",
+            firstOption: "Eğitim sistemleri genellikle ezberci yaklaşımlar üzerine kuruludur.",
+            secondOption: "Bireylerin bilgiye ulaşma yollarını bilmeleri önemlidir.",
+            thirdOption: "Eleştirel düşünebilen bireyler yetiştirilmesi hedeflenmelidir.",
+            fourthOption: "Ezbercilik, toplumsal gelişimi olumsuz etkiler.",
+            fifthOption: "Eğitim sisteminin temel amacı, bireyleri bilgiyle donatmaktır.",
+            correctAnswer: "Eleştirel düşünebilen bireyler yetiştirilmesi hedeflenmelidir.",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 4,
+            questionContent: "Toplumsal yapının temeli olan aile, bireylerin ilk sosyal deneyimlerini kazandıkları yerdir. Aile içindeki ilişkiler, bireylerin kişilik gelişiminde önemli bir rol oynar. Özellikle çocukluk döneminde aileden alınan değerler, bireyin hayatı boyunca sürecek davranış kalıplarını oluşturur. Ancak modern toplumlarda aile yapısının değişmesi, bu süreçte bazı aksaklıklara neden olabilmektedir.",
+            question: "Bu parçada aşağıdakilerden hangisine değinilmiştir?",
+            firstOption: "Aile yapısının değişmesinin sonuçlarına",
+            secondOption: "Bireylerin kişilik gelişiminde ailenin rolüne",
+            thirdOption: "Modern toplumların aile üzerindeki etkilerine",
+            fourthOption: "Aile içi ilişkilerin bireyler üzerindeki etkilerine",
+            fifthOption: "Çocukluk döneminde alınan değerlerin önemine",
+            correctAnswer: "Aile yapısının değişmesinin sonuçlarına",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 5,
+            questionContent: "Dil, sadece bir iletişim aracı olmanın ötesinde, bir milletin kültürünü, tarihini ve toplumsal değerlerini yansıtan bir aynadır. Dil aracılığıyla nesiller arasında bilgi ve değer aktarımı sağlanır. Bu nedenle, bir dilin zenginliği ve derinliği, o milletin kültürel zenginliğinin de bir göstergesidir. Ancak küreselleşmenin etkisiyle bazı dillerin giderek zayıfladığı ve hatta yok olma tehlikesiyle karşı karşıya olduğu gözlenmektedir.",
+            question: "Bu parçadan çıkarılabilecek en kapsamlı sonuç aşağıdakilerden hangisidir?",
+            firstOption: "Dil, bir milletin tarihini ve kültürünü yansıtır.",
+            secondOption: "Küreselleşme bazı dillerin zayıflamasına yol açmaktadır.",
+            thirdOption: "Dil, sadece bir iletişim aracı değildir.",
+            fourthOption: "Bir dilin zenginliği, kültürel zenginliği gösterir.",
+            fifthOption: "Küreselleşme, dil zenginliğini olumsuz etkilemektedir.",
+            correctAnswer: "Küreselleşme, dil zenginliğini olumsuz etkilemektedir.",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 6,
+            questionContent: "İnsanlar arasındaki ilişkilerde empati kurmanın önemi büyüktür. Empati, karşımızdaki kişinin duygularını anlamak ve ona bu anlayışla yaklaşmak demektir. Empati kurabilen insanlar, daha sağlıklı ve sürdürülebilir ilişkiler geliştirebilirler. Çünkü empati, karşılıklı anlayışı ve saygıyı pekiştirir. Ancak empati eksikliği, çoğu zaman çatışmalara ve anlaşmazlıklara yol açar.",
+            question: "Bu parçada empati kurmanın hangi özelliği vurgulanmıştır?",
+            firstOption: "Duygusal zeka ile olan ilişkisi",
+            secondOption: "İnsan ilişkilerini güçlendirmesi",
+            thirdOption: "Çatışmaları önlemesi",
+            fourthOption: "Karşılıklı saygıyı artırması",
+            fifthOption: "Anlaşmazlıkları çözmesi",
+            correctAnswer: "İnsan ilişkilerini güçlendirmesi",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 7,
+            questionContent: "Küresel ısınma, dünyanın iklim dengelerini altüst eden ve yaşamı tehdit eden ciddi bir sorundur. Bu sorun, sadece buzulların erimesine ve deniz seviyelerinin yükselmesine neden olmakla kalmamakta, aynı zamanda hava olaylarının şiddetlenmesine de yol açmaktadır. Artan sıcaklıklar, kuraklık ve su kaynaklarının azalması gibi problemlere sebep olurken, ekosistemlerin dengesini de bozmaktadır. Bu nedenle, küresel ısınmayla mücadele etmek, insanlık için hayati bir önem taşımaktadır.",
+            question: "Bu parçada küresel ısınmanın neden olduğu sonuçlardan hangisine değinilmemiştir?",
+            firstOption: "Buzulların erimesi",
+            secondOption: "Deniz seviyelerinin yükselmesi",
+            thirdOption: "Hava olaylarının şiddetlenmesi",
+            fourthOption: "Kuraklık ve su kaynaklarının azalması",
+            fifthOption: "Orman yangınlarının artması",
+            correctAnswer: "Orman yangınlarının artması",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 8,
+            questionContent: "Sanayi Devrimi ile başlayan teknolojik ilerlemeler, insan hayatını her açıdan etkilemiştir. Bu ilerlemeler, üretim süreçlerinin hızlanmasına, verimliliğin artmasına ve yaşam standartlarının yükselmesine katkı sağlamıştır. Ancak teknolojinin bu hızlı gelişimi, çevre sorunlarını da beraberinde getirmiştir. Hava ve su kirliliği, doğal kaynakların tükenmesi gibi problemler, teknolojik gelişmelerin olumsuz yanları olarak karşımıza çıkmaktadır.",
+            question: "Bu parçada teknolojik gelişmelerin hangi yönüne vurgu yapılmıştır?",
+            firstOption: "Üretim süreçlerini hızlandırması",
+            secondOption: "Yaşam standartlarını yükseltmesi",
+            thirdOption: "Çevre sorunlarına yol açması",
+            fourthOption: "Verimliliği artırması",
+            fifthOption: "Doğal kaynakları tüketmesi",
+            correctAnswer: "Çevre sorunlarına yol açması",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 9,
+            questionContent: "Edebiyat, insanın kendini ifade etme biçimlerinden biridir. Şiir, roman, öykü gibi türlerle bireyler, duygu ve düşüncelerini dile getirirler. Edebiyat eserleri, sadece bireysel duyguları değil, toplumsal olayları ve düşünceleri de yansıtır. Bu sayede, edebi eserler hem bireysel hem de toplumsal birer belge niteliği taşır. Edebiyat, bu çok yönlü yapısıyla kültürel birikimin korunmasına ve aktarılmasına katkı sağlar.",
+            question: "Bu parçada edebiyatın hangi işlevine değinilmemiştir?",
+            firstOption: "Bireysel duyguları ifade etme",
+            secondOption: "Toplumsal olayları yansıtma",
+            thirdOption: "Kültürel birikimi koruma",
+            fourthOption: "Toplumsal düşünceleri aktarma",
+            fifthOption: "Eğitici ve öğretici olma",
+            correctAnswer: "Eğitici ve öğretici olma",
+            examId: 4
+        });
+        
+        await Questions.create({
+            questionNumber: 10,
+            questionContent: "Birçok dil bilgisi kuralının yanında noktalama işaretleri de yazılı anlatımda büyük bir öneme sahiptir. Noktalama işaretleri, cümlelerin doğru anlaşılmasını ve anlatımın akıcılığını sağlar. Yanlış veya eksik kullanılan noktalama işaretleri, anlatım bozukluklarına ve anlam kaymalarına neden olabilir. Örneğin, virgülün doğru kullanımı, cümledeki anlamın açıkça anlaşılmasını sağlar ve cümlenin bölümlerini net bir şekilde ayırır.",
+            question: "Bu parçada noktalama işaretleriyle ilgili olarak aşağıdakilerden hangisine değinilmemiştir?",
+            firstOption: "Noktalama işaretlerinin yazılı anlatımdaki önemi",
+            secondOption: "Yanlış kullanılan noktalama işaretlerinin sonuçları",
+            thirdOption: "Noktalama işaretlerinin anlatım akıcılığını sağladığı",
+            fourthOption: "Virgülün doğru kullanımı",
+            fifthOption: "Noktalama işaretlerinin eğitimde öğretilmesi",
+            correctAnswer: "Noktalama işaretlerinin eğitimde öğretilmesi",
+            examId: 4
+        });
+
+        // Kimya (Temel Seviye)
+        await Questions.create({
+            questionNumber: 1,
+            questionContent: "Atomlar, proton, nötron ve elektronlardan oluşur. Protonlar ve nötronlar çekirdekte yer alırken, elektronlar çekirdek etrafındaki enerji seviyelerinde bulunur. Bir atomun kimyasal özelliklerini belirleyen elektronların yerleşim düzenidir.",
+            question: "Atomun kimyasal özelliklerini belirleyen faktör aşağıdakilerden hangisidir?",
+            firstOption: "Protonların sayısı",
+            secondOption: "Nötronların sayısı",
+            thirdOption: "Çekirdeğin kütlesi",
+            fourthOption: "Elektronların yerleşim düzeni",
+            fifthOption: "Çekirdeğin yükü",
+            correctAnswer: "Elektronların yerleşim düzeni",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 2,
+            questionContent: "Kimyasal tepkimeler, maddelerin kimyasal özelliklerinin değiştiği süreçlerdir. Bu tepkimelerde atomlar yeniden düzenlenir ve yeni maddeler oluşur. Tepkimeye giren maddelere reaktant, oluşan maddelere ise ürün denir.",
+            question: "Kimyasal tepkimelerde tepkimeye giren maddelere ne ad verilir?",
+            firstOption: "Ürün",
+            secondOption: "Reaktant",
+            thirdOption: "Bileşik",
+            fourthOption: "Çözelti",
+            fifthOption: "Karışım",
+            correctAnswer: "Reaktant",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 3,
+            questionContent: "Maddelerin halleri, katı, sıvı ve gaz olmak üzere üç temel fazda bulunur. Katı haldeki maddeler belirli bir şekil ve hacme sahiptir, sıvılar belirli bir hacme sahip olup, bulundukları kabın şeklini alırlar, gazlar ise ne belirli bir şekil ne de hacme sahiptir ve bulundukları kabın tamamını doldururlar.",
+            question: "Aşağıdaki maddelerden hangisi katı, sıvı ve gaz halde bulunabilir?",
+            firstOption: "Demir",
+            secondOption: "Alüminyum",
+            thirdOption: "Su",
+            fourthOption: "Oksijen",
+            fifthOption: "Karbon",
+            correctAnswer: "Su",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 4,
+            questionContent: "Elementler, aynı tür atomlardan oluşan saf maddelerdir ve kimyasal yöntemlerle daha basit maddelere ayrılamazlar. Her elementin kendine özgü bir sembolü vardır ve bu semboller elementlerin kimyasal formüllerinde kullanılır.",
+            question: "Aşağıdaki maddelerden hangisi bir elementtir?",
+            firstOption: "Su",
+            secondOption: "Karbon dioksit",
+            thirdOption: "Hidrojen",
+            fourthOption: "Tuz",
+            fifthOption: "Şeker",
+            correctAnswer: "Hidrojen",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 5,
+            questionContent: "Periyodik tablo, elementlerin artan atom numaralarına göre sıralandığı ve benzer kimyasal özelliklere sahip elementlerin aynı sütunda yer aldığı tablodur. Periyodik tabloda yatay sıralara periyot, dikey sütunlara ise grup denir.",
+            question: "Periyodik tabloda dikey sütunlara ne ad verilir?",
+            firstOption: "Periyot",
+            secondOption: "Grup",
+            thirdOption: "Aynı",
+            fourthOption: "Sıra",
+            fifthOption: "Bölüm",
+            correctAnswer: "Grup",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 6,
+            questionContent: "Moleküller, iki veya daha fazla atomun kimyasal bağlarla bir araya gelerek oluşturduğu yapılardır. Moleküller, element molekülleri ve bileşik molekülleri olarak ikiye ayrılır. Element molekülleri, aynı tür atomlardan oluşurken, bileşik molekülleri farklı tür atomlardan oluşur.",
+            question: "Aşağıdaki seçeneklerden hangisi bir bileşik molekülüne örnektir?",
+            firstOption: "O2",
+            secondOption: "H2",
+            thirdOption: "N2",
+            fourthOption: "H2O",
+            fifthOption: "He",
+            correctAnswer: "H2O",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 7,
+            questionContent: "Asitler, sulu çözeltilerinde hidrojen iyonu (H+) veren maddelerdir. Bazlar ise sulu çözeltilerinde hidroksit iyonu (OH-) veren maddelerdir. Asitler genellikle ekşi tada sahiptir ve bazlar kaygan bir his verir.",
+            question: "Aşağıdaki maddelerden hangisi bir bazdır?",
+            firstOption: "HCl",
+            secondOption: "NaOH",
+            thirdOption: "H2SO4",
+            fourthOption: "CH3COOH",
+            fifthOption: "HNO3",
+            correctAnswer: "NaOH",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 8,
+            questionContent: "Kimyasal bağlar, atomlar arasında elektron alışverişi veya ortak kullanımı ile oluşur. İyonik bağlar, elektron alışverişi ile, kovalent bağlar ise elektronların ortak kullanımı ile meydana gelir. Metalik bağlar ise metal atomları arasında bulunur.",
+            question: "İyonik bağlar nasıl oluşur?",
+            firstOption: "Elektronların ortak kullanımı ile",
+            secondOption: "Elektron alışverişi ile",
+            thirdOption: "Proton alışverişi ile",
+            fourthOption: "Nötronların ortak kullanımı ile",
+            fifthOption: "Çekirdeklerin birleşmesi ile",
+            correctAnswer: "Elektron alışverişi ile",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 9,
+            questionContent: "Maddelerin belirli koşullar altında diğer maddelerle olan etkileşimleri kimyasal tepkime olarak adlandırılır. Kimyasal tepkimeler, maddelerin kimyasal özelliklerinin değiştiği ve yeni maddelerin oluştuğu süreçlerdir.",
+            question: "Kimyasal tepkimelerde aşağıdakilerden hangisi meydana gelir?",
+            firstOption: "Atom sayısının değişmesi",
+            secondOption: "Atomların yeniden düzenlenmesi",
+            thirdOption: "Atomların yok olması",
+            fourthOption: "Nötronların dönüşümü",
+            fifthOption: "Protonların kaybı",
+            correctAnswer: "Atomların yeniden düzenlenmesi",
+            examId: 5
+        });
+        
+        await Questions.create({
+            questionNumber: 10,
+            questionContent: "Enerji, bir maddenin iş yapabilme kapasitesidir. Kimyasal enerji, maddelerin kimyasal bağlarında depolanan enerjidir. Bu enerji, kimyasal tepkimeler sırasında açığa çıkabilir veya soğurulabilir.",
+            question: "Kimyasal enerji aşağıdaki maddelerden hangisinin yapısında depolanmıştır?",
+            firstOption: "Su",
+            secondOption: "Kömür",
+            thirdOption: "Hava",
+            fourthOption: "Tuz",
+            fifthOption: "Demir",
+            correctAnswer: "Kömür",
+            examId: 5
         });
     } 
 }
