@@ -9,7 +9,7 @@ const Lessons = require("./models/lessons");
 const Questions = require("./models/questions");
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3306;
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: false}));
