@@ -1,0 +1,19 @@
+<div class="bg-dark text-secondary px-4 py-5 text-center" style="border-radius: 3px;">
+    <div class="py-5">
+      <h1 class="display-5 fw-bold text-white"><%= exam.title %></h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="fs-5">
+            <%= exam.title %> adlı sınava başlamak üzeresiniz.
+            Sınava başla butonuna bastığınız andan itibaren ilgili derse ait sorular ekranınıza gelecektir.
+            Son soruyu da cevapladığınızda sınav bitiş ekranı karşınıza gelecek ve sonuçlarınıza ulaşabileceksiniz.
+            </p>
+            <p class="fs-6">
+                (Soru Sayısı: <b><%= exam.questionAmount %></b>)
+            </p>
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="/sinavlar/<%= exam.id %>/soru=1" class="btn btn-outline-success btn-lg px-4 me-sm-3 fw-bold">Sınava Başla</a>
+                <a href="/" class="btn btn-outline-light btn-lg px-4">Geri Dön</a>
+            </div>
+        </div>
+    </div>
+</div>

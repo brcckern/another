@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <%- include('../partials/head', title) %>
+</head>
+<body style="background-color: #f7f7f7">
+    <%- include('../partials/nav') %>
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-md-3">
+                <%- include('../partials/lessons', {lessons: lessons}) %>
+            </div>
+            <div class="col-md-9">
+                <h3 class="h3 mb-3"><%= title %></h3>
+                <% if (exams.length == 0) { %>
+                    <%- include('../partials/exam-not-found') %>
+                <% } %>
+                <% exams.forEach(exam => { %>
+                    <%- include('../partials/exams', {exam: exam}) %>
+                <% }) %>
+            </div>
+        </div>
+        <%- include('../partials/footer') %>
+    </div>
+</body>
+</html>
