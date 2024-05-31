@@ -8,6 +8,7 @@ require('dotenv').config({
 const sequelize = require("./data/sequelize");
 const dummyData = require("./data/dummy-data");
 
+const Contact = require("./models/contacts");
 const Exams = require("./models/exams");
 const Lessons = require("./models/lessons");
 const Questions = require("./models/questions");

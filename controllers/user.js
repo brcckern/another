@@ -1,3 +1,4 @@
+const Contacts = require("../models/contacts");
 const Lessons = require("../models/lessons");
 const Exams = require("../models/exams");
 const Questions = require("../models/questions");
@@ -5,15 +6,75 @@ const Questions = require("../models/questions");
 let correctAnswers = 0;
 let wrongAnswers = 0;
 let finishedExamId;
+let examStarted = false;
+
+exports.get_contact = async (req, res) => {
+    try
+    {
+        const lessons = await Lessons.findAll();
+        res.render("user/contact", {title: "İletişim", lessons: lessons, selectedIndex: null, durum: req.query.durum});
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+};
+
+exports.post_contact = async (req, res) => {
+    const fullName = req.body.fullName;
+    const email = req.body.email;
+    const message = req.body.message;
+    try
+    {
+        await Contacts.create({fullName: fullName, email: email, message: message});
+        res.redirect("/iletisim?durum=gonderildi");
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+};
+
+exports.faq = async (req, res) => {
+    try
+    {
+        const lessons = await Lessons.findAll();
+        res.render("user/faq", {title: "Sıkça Sorulan Sorular", lessons: lessons, selectedIndex: null});
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+};
+
+exports.popular_exams = async (req, res) => {
+    try
+    {
+        const exams = await Exams.findAll({
+            order:
+            [
+                ["examFinishedNumber", "DESC"]
+            ]
+        });
+        const lessons = await Lessons.findAll();
+        res.render("user/index", {title: "Popüler Sınavlar", exams: exams, lessons: lessons, selectedIndex: null});
+    }
+    catch(err)
+    {
+        console.log(err);
+    }
+};
 
 exports.exam_result_screen = (req, res) => {
     const examId = req.params.examId;
+
     if(finishedExamId == examId)
     {
         res.render("user/exam-result", {title: "Sınav Sonucu", correctAnswers: correctAnswers, wrongAnswers: wrongAnswers});
         correctAnswers = 0;
         wrongAnswers = 0;
         finishedExamId = 0;
+        examStarted = false;
     }
     else
     {
@@ -21,11 +82,12 @@ exports.exam_result_screen = (req, res) => {
     }
 };
 
+
 exports.get_exam_screen = async (req, res) => {
     const examId =  parseInt(req.params.examId);
     const questionId = parseInt(req.params.questionId);
     const questionNumber = questionId;
-
+    if(questionId != 1 && examStarted == false) return res.redirect("/");
     try
     {
         const exam = await Exams.findAll({
@@ -35,7 +97,6 @@ exports.get_exam_screen = async (req, res) => {
             }
         });
         if(!exam[0]) return res.redirect("/");
-
         const questions = await Questions.findAll({
             where:
             {
@@ -50,13 +111,19 @@ exports.get_exam_screen = async (req, res) => {
 
         if(questionId <= questionAmount)
         {
-            return res.render("user/exam-screen", {title: "Sınav Ekranı", exam: exam[0], questions: questions[questionNumber - 1], questionNumber: questionNumber});
+            return res.render("user/exam-screen", {title: "Sınav Ekranı", exam: exam[0], questions: questions[questionNumber - 1], questionAmount: questionAmount, questionNumber: questionNumber});
         }
 
         if(questionId + 1 > lastQuestion)
         {
-            finishedExamId = req.params.examId;
-            res.redirect(`/sinavlar/${examId}/sonuc`);
+            const exam = await Exams.findByPk(examId);
+            if(exam)
+            {
+                exam.examFinishedNumber++;
+                exam.save();
+            }
+            finishedExamId = parseInt(req.params.examId);
+            return res.redirect(`/sinavlar/${examId}/sonuc`);
         }
         res.redirect("/");
     }
@@ -85,6 +152,7 @@ exports.post_exam_screen = async (req, res) => {
         if(answer == question[0].correctAnswer) correctAnswers++;
         else wrongAnswers++;
 
+        examStarted = true;
         res.redirect(`/sinavlar/${examId}/soru=${nextQuestionNumber}`);
     }
     catch(err)
@@ -138,8 +206,9 @@ exports.lessons_by_id = async (req, res) => {
 exports.home = async (req, res) => {
     try
     {
-        const lessons = await Lessons.findAll();
+
         const exams = await Exams.findAll();
+        const lessons = await Lessons.findAll();
 
         res.render("user/index", {title: "Ana Sayfa", exams: exams, lessons: lessons, selectedIndex: null});
     }

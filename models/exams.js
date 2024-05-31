@@ -22,10 +22,10 @@ const Exams = sequelize.define("exams", {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    activeOnHome:
+    examFinishedNumber:
     {
-        type: DataTypes.BOOLEAN,
-        allowNull: false
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 }, {timestamps: false});
 

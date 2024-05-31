@@ -21,7 +21,7 @@ async function populate()
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis inventore voluptate id iste error excepturi iure, expedita natus earum iusto officiis minima facilis illo molestiae alias corrupti velit at vero.",
             image: "fizik-1.jpg",
             questionAmount: 10,
-            activeOnHome: true,
+            examFinishedNumber: 0,
             lessonId: 2
         });
 
@@ -30,7 +30,7 @@ async function populate()
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis inventore voluptate id iste error excepturi iure, expedita natus earum iusto officiis minima facilis illo molestiae alias corrupti velit at vero.",
             image: "matematik-1.jpg",
             questionAmount: 12,
-            activeOnHome: true,
+            examFinishedNumber: 0,
             lessonId: 4
         });
 
@@ -39,7 +39,7 @@ async function populate()
             description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis inventore voluptate id iste error excepturi iure, expedita natus earum iusto officiis minima facilis illo molestiae alias corrupti velit at vero.",
             image: "turkce-1.jpg",
             questionAmount: 10,
-            activeOnHome: true,
+            examFinishedNumber: 0,
             lessonId: 6
         });
 
